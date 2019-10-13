@@ -383,6 +383,7 @@ class BPServiceActor implements Runnable {
             NamespaceInfo.Capability.STORAGE_BLOCK_REPORT_BUFFERS);
     blockReportSizes.clear();
     try {
+      LOG.info("[msx] dfs.blockreport.split.threshold blockReport");
       if (totalBlockCount < dnConf.blockReportSplitThreshold) {
         // Below split threshold, send all reports in a single message.
         DatanodeCommand cmd = bpNamenode.blockReport(

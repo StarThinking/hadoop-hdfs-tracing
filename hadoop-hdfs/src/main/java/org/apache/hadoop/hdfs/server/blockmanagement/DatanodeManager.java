@@ -758,6 +758,7 @@ public class DatanodeManager {
 
   /** Is the datanode dead? */
   boolean isDatanodeDead(DatanodeDescriptor node) {
+	LOG.info("[msx] dfs.namenode.heartbeat.recheck-interval isDatanodeDead");
     return (node.getLastUpdateMonotonic() <
             (monotonicNow() - heartbeatExpireInterval));
   }

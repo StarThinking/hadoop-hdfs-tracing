@@ -437,6 +437,7 @@ class HeartbeatManager implements DatanodeStatistics {
         restartHeartbeatStopWatch();
         try {
           final long now = Time.monotonicNow();
+          LOG.info("[msx] dfs.namenode.heartbeat.recheck-interval run");
           if (lastHeartbeatCheck + heartbeatRecheckInterval < now) {
             heartbeatCheck();
             lastHeartbeatCheck = now;
