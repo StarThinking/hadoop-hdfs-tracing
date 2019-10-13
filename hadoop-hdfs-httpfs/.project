@@ -1,0 +1,16 @@
+<projectDescription>
+  <name>hadoop-hdfs-httpfs</name>
+  <comment>Apache Hadoop HttpFS</comment>
+  <projects>
+    <project>hadoop-hdfs</project>
+    <project>hadoop-hdfs-client</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
