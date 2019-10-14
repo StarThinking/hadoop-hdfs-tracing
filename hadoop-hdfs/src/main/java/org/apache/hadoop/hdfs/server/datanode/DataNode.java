@@ -1486,6 +1486,7 @@ public class DataNode extends ReconfigurableBase
     boolean isEnabled = conf.getBoolean(
         DFSConfigKeys.DFS_BLOCK_ACCESS_TOKEN_ENABLE_KEY,
         DFSConfigKeys.DFS_BLOCK_ACCESS_TOKEN_ENABLE_DEFAULT);
+    LOG.info("[para-use] dfs.block.access.token.enable");
     if (!isEnabled) {
       String errMessage = "Security is enabled but block access tokens " +
           "(via " + DFSConfigKeys.DFS_BLOCK_ACCESS_TOKEN_ENABLE_KEY + ") " +
@@ -2608,6 +2609,7 @@ public class DataNode extends ReconfigurableBase
     return new DataEncryptionKeyFactory() {
       @Override
       public DataEncryptionKey newDataEncryptionKey() {
+    	LOG.info("[para-use] dfs.encrypt.data.transfer");
         return dnConf.encryptDataTransfer ?
           blockPoolTokenSecretManager.generateDataEncryptionKey(
             block.getBlockPoolId()) : null;
@@ -3587,6 +3589,7 @@ public class DataNode extends ReconfigurableBase
 
   @Override // DataNodeMXBean
   public String getSendPacketDownstreamAvgInfo() {
+	LOG.info("[para-use] dfs.datanode.peer.stats.enabled");
     return peerMetrics != null ?
         peerMetrics.dumpSendPacketDownstreamAvgInfoAsJson() : null;
   }

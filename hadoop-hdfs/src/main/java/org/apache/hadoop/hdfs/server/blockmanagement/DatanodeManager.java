@@ -758,7 +758,7 @@ public class DatanodeManager {
 
   /** Is the datanode dead? */
   boolean isDatanodeDead(DatanodeDescriptor node) {
-	LOG.info("[msx] dfs.namenode.heartbeat.recheck-interval isDatanodeDead");
+	LOG.info("[para-use] dfs.namenode.heartbeat.recheck-interval");
     return (node.getLastUpdateMonotonic() <
             (monotonicNow() - heartbeatExpireInterval));
   }
@@ -1719,6 +1719,7 @@ public class DatanodeManager {
       nodeinfo.setBalancerBandwidth(0);
     }
 
+    LOG.info("[para-use] dfs.datanode.peer.stats.enabled");
     if (slowPeerTracker != null) {
       final Map<String, Double> slowPeersMap = slowPeers.getSlowPeers();
       if (!slowPeersMap.isEmpty()) {

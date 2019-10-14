@@ -579,6 +579,7 @@ public class BlockManager implements BlockStatsMXBean {
     LOG.info("{} = {}", DFSConfigKeys.DFS_BLOCK_ACCESS_TOKEN_ENABLE_KEY,
             isEnabled);
 
+    LOG.info("[para-use] dfs.block.access.token.enable");
     if (!isEnabled) {
       if (UserGroupInformation.isSecurityEnabled()) {
         String errMessage = "Security is enabled but block access tokens " +
@@ -1416,6 +1417,7 @@ public class BlockManager implements BlockStatsMXBean {
   }
   
   public DataEncryptionKey generateDataEncryptionKey() {
+	LOG.info("[para-use] dfs.encrypt.data.transfer");
     if (isBlockTokenEnabled() && encryptDataTransfer) {
       return blockTokenSecretManager.generateDataEncryptionKey();
     } else {
