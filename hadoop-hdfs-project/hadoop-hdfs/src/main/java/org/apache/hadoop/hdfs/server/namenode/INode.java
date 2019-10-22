@@ -715,6 +715,7 @@ public abstract class INode implements INodeAttributes, Diff.Element<byte[]> {
    */
   public final INode setAccessTime(long accessTime, int latestSnapshotId,
       boolean skipCaptureAccessTimeOnlyChangeInSnapshot) {
+	LOG.info("[para-use] dfs.namenode.snapshot.skip.capture.accesstime-only-change");
     if (!skipCaptureAccessTimeOnlyChangeInSnapshot) {
       recordModification(latestSnapshotId);
     }

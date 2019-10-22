@@ -430,6 +430,7 @@ class FSDirXAttrOp {
 
   private static void checkXAttrsConfigFlag(FSDirectory fsd) throws
                                                              IOException {
+	LOG.info("[para-use] dfs.namenode.xattrs.enabled");
     if (!fsd.isXattrsEnabled()) {
       throw new IOException(String.format(
           "The XAttr operation has been rejected.  "

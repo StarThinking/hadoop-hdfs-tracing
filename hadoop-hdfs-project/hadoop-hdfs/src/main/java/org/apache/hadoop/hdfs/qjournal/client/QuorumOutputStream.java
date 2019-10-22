@@ -115,6 +115,7 @@ class QuorumOutputStream extends EditLogOutputStream {
 
       // If we don't have this dummy send, committed TxId might be one-batch
       // stale on the Journal Nodes
+      LOG.info("[para-use] dfs.ha.tail-edits.in-progress");
       if (updateCommittedTxId) {
         QuorumCall<AsyncLogger, Void> fakeCall = loggers.sendEdits(
             segmentTxId, firstTxToFlush,

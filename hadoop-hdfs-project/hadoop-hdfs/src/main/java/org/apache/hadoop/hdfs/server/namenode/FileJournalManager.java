@@ -359,6 +359,7 @@ public class FileJournalManager implements JournalManager {
       long maxTxIdToScan, boolean inProgressOk) {
     for (EditLogFile elf : elfs) {
       if (elf.isInProgress()) {
+    	LOG.info("[para-use] dfs.ha.tail-edits.in-progress");
         if (!inProgressOk) {
           if (LOG.isDebugEnabled()) {
             LOG.debug("passing over " + elf + " because it is in progress " +

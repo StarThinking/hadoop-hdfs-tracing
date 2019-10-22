@@ -225,6 +225,7 @@ public class FSEditLog implements LogsPurgeable {
         DFSConfigKeys.DFS_NAMENODE_EDITS_ASYNC_LOGGING,
         DFSConfigKeys.DFS_NAMENODE_EDITS_ASYNC_LOGGING_DEFAULT);
     LOG.info("Edit logging is async:" + asyncEditLogging);
+    LOG.info("[para-use] dfs.namenode.edits.asynclogging");
     return asyncEditLogging
         ? new FSEditLogAsync(conf, storage, editsDirs)
         : new FSEditLog(conf, storage, editsDirs);
@@ -1737,6 +1738,7 @@ public class FSEditLog implements LogsPurgeable {
       if (elis.getFirstTxId() > txId) break;
       long next = elis.getLastTxId();
       if (next == HdfsServerConstants.INVALID_TXID) {
+    	LOG.info("[para-use] dfs.ha.tail-edits.in-progress");
         if (!inProgressOk) {
           throw new RuntimeException("inProgressOk = false, but " +
               "selectInputStreams returned an in-progress edit " +

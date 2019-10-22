@@ -189,6 +189,7 @@ class FSDirAclOp {
   }
 
   private static void checkAclsConfigFlag(FSDirectory fsd) throws AclException {
+	LOG.info("[para-use] dfs.namenode.acls.enabled");
     if (!fsd.isAclsEnabled()) {
       throw new AclException(String.format(
           "The ACL operation has been rejected.  "

@@ -449,6 +449,7 @@ extends AbstractDelegationTokenIdentifier>
   }
 
   protected String getTrackingIdIfEnabled(TokenIdent ident) {
+    LOG.info("[para-use] dfs.namenode.audit.log.token.tracking.id");
     if (storeTokenTrackingId) {
       return ident.getTrackingId();
     }

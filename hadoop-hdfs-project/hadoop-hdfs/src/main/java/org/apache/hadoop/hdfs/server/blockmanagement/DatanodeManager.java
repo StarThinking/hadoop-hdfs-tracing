@@ -420,6 +420,7 @@ public class DatanodeManager {
   }
 
   private boolean isInactive(DatanodeInfo datanode) {
+	LOG.info("[para-use] dfs.namenode.avoid.read.stale.datanode");
     return datanode.isDecommissioned() ||
         (avoidStaleDataNodesForRead && datanode.isStale(staleInterval));
 
@@ -441,6 +442,7 @@ public class DatanodeManager {
    */
   public void sortLocatedBlocks(final String targetHost,
       final List<LocatedBlock> locatedBlocks) {
+	LOG.info("[para-use] dfs.namenode.avoid.read.stale.datanode");
     Comparator<DatanodeInfo> comparator = avoidStaleDataNodesForRead ?
         new DFSUtil.ServiceAndStaleComparator(staleInterval) :
         new DFSUtil.ServiceComparator();
@@ -1092,6 +1094,7 @@ public class DatanodeManager {
           nodeS.setDisallowed(false); // Node is in the include list
 
           // resolve network location
+          LOG.info("[para-use] dfs.namenode.reject-unresolved-dn-topology-mapping");
           if(this.rejectUnresolvedTopologyDN) {
             nodeS.setNetworkLocation(resolveNetworkLocation(nodeS));
             nodeS.setDependentHostNames(getNetworkDependencies(nodeS));
@@ -1277,6 +1280,7 @@ public class DatanodeManager {
   public boolean shouldAvoidStaleDataNodesForWrite() {
     // If # stale exceeds maximum staleness ratio, disable stale
     // datanode avoidance on the write path
+	LOG.info("[para-use] dfs.namenode.avoid.write.stale.datanode");
     return avoidStaleDataNodesForWrite &&
         (numStaleNodes <= heartbeatManager.getLiveDatanodeCount()
             * ratioUseStaleDataNodesForWrite);

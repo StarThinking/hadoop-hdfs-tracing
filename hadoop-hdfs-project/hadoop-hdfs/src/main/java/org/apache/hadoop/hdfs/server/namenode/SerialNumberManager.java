@@ -65,6 +65,7 @@ public enum SerialNumberManager {
     boolean useExpanded = conf.getBoolean(
         DFS_IMAGE_EXPANDED_STRING_TABLES_KEY,
         DFS_IMAGE_EXPANDED_STRING_TABLES_DEFAULT);
+    LOG.info("[para-use] dfs.image.string-tables.expanded");
     if (initialized) {
       if (useExpanded ^ !GLOBAL.enabled) {
         throw new IllegalStateException("Cannot change serial maps");
@@ -82,6 +83,7 @@ public enum SerialNumberManager {
   }
 
   private static void initializeSerialMaps(boolean useExpanded) {
+	LOG.info("[para-use] dfs.image.string-tables.expanded");
     if (useExpanded) {
       // initialize per-manager serial maps for all but global.
       for (SerialNumberManager snm : values) {

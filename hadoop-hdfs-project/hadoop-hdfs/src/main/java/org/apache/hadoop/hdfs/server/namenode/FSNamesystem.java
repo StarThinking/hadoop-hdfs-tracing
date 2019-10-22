@@ -988,6 +988,7 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
     boolean enable = conf.getBoolean(DFS_NAMENODE_ENABLE_RETRY_CACHE_KEY,
                                      DFS_NAMENODE_ENABLE_RETRY_CACHE_DEFAULT);
     LOG.info("Retry cache on namenode is " + (enable ? "enabled" : "disabled"));
+    LOG.info("[para-use] dfs.namenode.enable.retrycache");
     if (enable) {
       float heapPercent = conf.getFloat(
           DFS_NAMENODE_RETRY_CACHE_HEAP_PERCENT_KEY,
@@ -1065,6 +1066,7 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
     }
 
     // Add audit logger to calculate top users
+    LOG.info("[para-use] dfs.namenode.top.enabled");
     if (topConf.isEnabled) {
       topMetrics = new TopMetrics(conf, topConf.nntopReportingPeriodsMs);
       if (DefaultMetricsSystem.instance().getSource(
@@ -1312,6 +1314,7 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
   }
 
   private boolean shouldUseDelegationTokens() {
+	LOG.info("[para-use] dfs.namenode.delegation.token.always-use");
     return UserGroupInformation.isSecurityEnabled() ||
       alwaysUseDelegationTokensForTests;
   }
@@ -1385,6 +1388,7 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
     dir.disableQuotaChecks();
     editLogTailer = new EditLogTailer(this, conf);
     editLogTailer.start();
+    LOG.info("[para-use] dfs.ha.standby.checkpoints");
     if (standbyShouldCheckpoint) {
       standbyCheckpointer = new StandbyCheckpointer(conf, this);
       standbyCheckpointer.start();
@@ -5135,6 +5139,7 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
 
   @Override // FSNamesystemMBean
   public String getTopUserOpCounts() {
+	LOG.info("[para-use] dfs.namenode.top.enabled");
     if (!topConf.isEnabled) {
       return null;
     }
@@ -7894,6 +7899,7 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
           sb.append(status.getGroup()).append(":");
           sb.append(status.getPermission());
         }
+        LOG.info("[para-use] dfs.namenode.audit.log.token.tracking.id");
         if (logTokenTrackingId) {
           sb.append("\t").append("trackingId=");
           String trackingId = null;

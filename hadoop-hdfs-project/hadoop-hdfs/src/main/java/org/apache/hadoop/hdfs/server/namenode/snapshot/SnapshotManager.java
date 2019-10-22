@@ -461,6 +461,7 @@ public class SnapshotManager implements SnapshotStatsMXBean {
     // Find the source root directory path where the snapshots were taken.
     // All the check for path has been included in the valueOf method.
     INodeDirectory snapshotRootDir;
+    LOG.info("[para-use] dfs.namenode.snapshotdiff.allow.snap-root-descendant");
     if (this.snapshotDiffAllowSnapRootDescendant) {
       snapshotRootDir = getSnapshottableAncestorDir(iip);
     } else {
@@ -494,6 +495,7 @@ public class SnapshotManager implements SnapshotStatsMXBean {
     // Find the source root directory path where the snapshots were taken.
     // All the check for path has been included in the valueOf method.
     INodeDirectory snapshotRootDir;
+    LOG.info("[para-use] dfs.namenode.snapshotdiff.allow.snap-root-descendant");
     if (this.snapshotDiffAllowSnapRootDescendant) {
       snapshotRootDir = getSnapshottableAncestorDir(iip);
     } else {

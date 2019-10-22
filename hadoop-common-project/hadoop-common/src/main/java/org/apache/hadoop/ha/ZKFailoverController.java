@@ -160,6 +160,7 @@ public abstract class ZKFailoverController {
   HAServiceState getServiceState() { return serviceState; }
 
   public int run(final String[] args) throws Exception {
+	LOG.info("[para-use] dfs.ha.automatic-failover.enabled");
     if (!localTarget.isAutoFailoverEnabled()) {
       LOG.error("Automatic failover is not enabled for " + localTarget + "." +
           " Please ensure that automatic failover is enabled in the " +

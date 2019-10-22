@@ -532,6 +532,7 @@ public class BlockPlacementPolicyDefault extends BlockPlacementPolicy {
       return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize,
           maxNodesPerRack, results, avoidStaleNodes, storageTypes);
     }
+    LOG.info("[para-use] dfs.namenode.block-placement-policy.default.prefer-local-node");
     if (preferLocalNode && localMachine instanceof DatanodeDescriptor
         && clusterMap.contains(localMachine)) {
       DatanodeDescriptor localDatanode = (DatanodeDescriptor) localMachine;
@@ -769,6 +770,7 @@ public class BlockPlacementPolicyDefault extends BlockPlacementPolicy {
             .append(" [");
       }
       DatanodeStorageInfo storage = null;
+      LOG.info("[para-use] dfs.namenode.redundancy.considerLoad");
       if (isGoodDatanode(chosenNode, maxNodesPerRack, considerLoad,
           results, avoidStaleNodes)) {
         for (Iterator<Map.Entry<StorageType, Integer>> iter = storageTypes

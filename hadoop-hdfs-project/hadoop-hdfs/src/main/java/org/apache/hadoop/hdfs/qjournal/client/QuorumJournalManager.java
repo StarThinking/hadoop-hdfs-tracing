@@ -505,6 +505,7 @@ public class QuorumJournalManager implements JournalManager {
         // than committedTxnId. This ensures the consistency.
         // We don't do the following for finalized log segments, since all
         // edits in those are guaranteed to be committed.
+        LOG.info("[para-use] dfs.ha.tail-edits.in-progress");
         if (onlyDurableTxns && inProgressOk && remoteLog.isInProgress()) {
           endTxId = Math.min(endTxId, committedTxnId);
           if (endTxId < remoteLog.getStartTxId()) {

@@ -126,6 +126,7 @@ public class ProvidedStorageMap {
    */
   DatanodeStorageInfo getStorage(DatanodeDescriptor dn, DatanodeStorage s)
       throws IOException {
+	LOG.info("[para-use] dfs.namenode.provided.enabled");
     if (providedEnabled && storageId.equals(s.getStorageID())) {
       if (StorageType.PROVIDED.equals(s.getStorageType())) {
         if (providedStorageInfo.getState() == State.FAILED
@@ -167,6 +168,7 @@ public class ProvidedStorageMap {
   }
 
   public LocatedBlockBuilder newLocatedBlocks(int maxValue) {
+	LOG.info("[para-use] dfs.namenode.provided.enabled");
     if (!providedEnabled) {
       return new LocatedBlockBuilder(maxValue);
     }
@@ -174,6 +176,7 @@ public class ProvidedStorageMap {
   }
 
   public void removeDatanode(DatanodeDescriptor dnToRemove) {
+	LOG.info("[para-use] dfs.namenode.provided.enabled");
     if (providedEnabled) {
       assert lock.hasWriteLock() : "Not holding write lock";
       providedDescriptor.remove(dnToRemove);
@@ -192,6 +195,7 @@ public class ProvidedStorageMap {
   }
 
   public void updateStorage(DatanodeDescriptor node, DatanodeStorage storage) {
+	LOG.info("[para-use] dfs.namenode.provided.enabled");
     if (isProvidedStorage(storage.getStorageID())) {
       if (StorageType.PROVIDED.equals(storage.getStorageType())) {
         node.injectStorage(providedStorageInfo);

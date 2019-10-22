@@ -151,6 +151,7 @@ public class FSImage implements Closeable {
     this.conf = conf;
 
     storage = new NNStorage(conf, imageDirs, editsDirs);
+    LOG.info("[para-use] dfs.namenode.name.dir.restore");
     if(conf.getBoolean(DFSConfigKeys.DFS_NAMENODE_NAME_DIR_RESTORE_KEY,
                        DFSConfigKeys.DFS_NAMENODE_NAME_DIR_RESTORE_DEFAULT)) {
       storage.setRestoreFailedStorage(true);

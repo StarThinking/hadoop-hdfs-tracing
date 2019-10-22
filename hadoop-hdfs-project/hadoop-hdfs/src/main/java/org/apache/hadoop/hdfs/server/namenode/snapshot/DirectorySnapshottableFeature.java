@@ -200,6 +200,7 @@ public class DirectorySnapshottableFeature extends DirectoryWithSnapshotFeature 
     snapshotRoot.updateModificationTime(now, Snapshot.CURRENT_STATE_ID);
     s.getRoot().setModificationTime(now, Snapshot.CURRENT_STATE_ID);
 
+    LOG.info("[para-use] dfs.namenode.snapshot.capture.openfiles");
     if (captureOpenFiles) {
       try {
         Set<INodesInPath> openFilesIIP =

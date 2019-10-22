@@ -119,6 +119,7 @@ class FSNamesystemLock {
     boolean fair = conf.getBoolean(DFS_NAMENODE_FSLOCK_FAIR_KEY,
         DFS_NAMENODE_FSLOCK_FAIR_DEFAULT);
     FSNamesystem.LOG.info("fsLock is fair: " + fair);
+    LOG.info("[para-use] dfs.namenode.fslock.fair");
     this.coarseLock = new ReentrantReadWriteLock(fair);
     this.timer = timer;
 
@@ -309,6 +310,7 @@ class FSNamesystemLock {
    * @param value Length of time the lock was held (nanoseconds)
    */
   private void addMetric(String operationName, long value, boolean isWrite) {
+	LOG.info("[para-use] dfs.namenode.lock.detailed-metrics.enabled");
     if (metricsEnabled) {
       String opMetric = getMetricName(operationName, isWrite);
       detailedHoldTimeMetrics.add(opMetric, value);

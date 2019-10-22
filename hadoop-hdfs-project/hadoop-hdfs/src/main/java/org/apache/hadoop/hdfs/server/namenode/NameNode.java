@@ -717,6 +717,7 @@ public class NameNode extends ReconfigurableBase implements
 
   private void startAliasMapServerIfNecessary(Configuration conf)
       throws IOException {
+	LOG.info("[para-use] dfs.namenode.provided.enabled");
     if (conf.getBoolean(DFSConfigKeys.DFS_NAMENODE_PROVIDED_ENABLED,
         DFSConfigKeys.DFS_NAMENODE_PROVIDED_ENABLED_DEFAULT)
         && conf.getBoolean(DFSConfigKeys.DFS_PROVIDED_ALIASMAP_INMEMORY_ENABLED,

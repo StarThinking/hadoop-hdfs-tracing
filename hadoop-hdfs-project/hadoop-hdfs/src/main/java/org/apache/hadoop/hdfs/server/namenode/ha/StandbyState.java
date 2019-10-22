@@ -78,6 +78,7 @@ public class StandbyState extends HAState {
   @Override
   public void checkOperation(HAContext context, OperationCategory op)
       throws StandbyException {
+	LOG.info("[para-use] dfs.ha.allow.stale.reads");
     if (op == OperationCategory.UNCHECKED ||
         (op == OperationCategory.READ && context.allowStaleReads())) {
       return;

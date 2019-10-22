@@ -150,6 +150,7 @@ public class TopMetrics implements MetricsSource {
    */
   @Override
   public void getMetrics(MetricsCollector collector, boolean all) {
+	LOG.info("[para-use] dfs.namenode.top.enabled");
     if (!isMetricsSourceEnabled) {
       return;
     }
